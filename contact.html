@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Байланыс — Ақмола цифр</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">Ақмола цифр</a>
+      <nav class="nav">
+        <a href="index.html">Басты бет</a>
+        <a href="about.html">Жобалар жөнінде</a>
+        <a href="projects.html">Жобалар</a>
+        <a href="contact.html">Байланыс</a>
+      </nav>
+      <div class="lang-switch">
+        <a href="contact_ru.html">RU</a>
+        <a href="contact.html" class="active">KZ</a>
+      </div>
+      <button class="nav-toggle" aria-label="Навигация">☰</button>
+    </div>
+  </header>
+  <main class="container">
+    <h1>Байланыс</h1>
+    <p>Сұрақтар мен ұсыныстар үшін мына форманы қолданыңыз немесе электрондық поштаға жіберіңіз.</p>
+    <form class="contact-form" action="#" onsubmit="return fakeSubmit(event)">
+      <label>Аты-жөні<input type="text" name="name" required></label>
+      <label>Электрондық пошта<input type="email" name="email" required></label>
+      <label>Хабарлама<textarea name="message" rows="5" required></textarea></label>
+      <button class="btn" type="submit">Жіберу</button>
+    </form>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 Ақмола цифр</p>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

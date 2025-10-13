@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Контакты — Акмола цифр</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index_ru.html">Акмола цифр</a>
+      <nav class="nav">
+        <a href="index_ru.html">Главная</a>
+        <a href="about_ru.html">О проекте</a>
+        <a href="projects_ru.html">Проекты</a>
+        <a href="contact_ru.html">Контакты</a>
+      </nav>
+      <div class="lang-switch">
+        <a href="contact_ru.html" class="active">RU</a>
+        <a href="contact.html">KZ</a>
+      </div>
+      <button class="nav-toggle" aria-label="Навигация">☰</button>
+    </div>
+  </header>
+  <main class="container">
+    <h1>Контакты</h1>
+    <p>Для вопросов и предложений используйте форму ниже или отправьте письмо на электронную почту.</p>
+    <form class="contact-form" action="#" onsubmit="return fakeSubmit(event)">
+      <label>ФИО<input type="text" name="name" required></label>
+      <label>Электронная почта<input type="email" name="email" required></label>
+      <label>Сообщение<textarea name="message" rows="5" required></textarea></label>
+      <button class="btn" type="submit">Отправить</button>
+    </form>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 Акмола цифр</p>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
