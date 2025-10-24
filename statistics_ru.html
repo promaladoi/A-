@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Статистика — Акмола цифр</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index_ru.html">Акмола цифр</a>
+      <nav class="nav">
+        <a href="index_ru.html">Главная</a>
+        <a href="about_ru.html">О проекте</a>
+        <a href="projects_ru.html">Проекты</a>
+        <a href="statistics_ru.html">Статистики</a>
+        <a href="contact_ru.html">Контакты</a>
+      </nav>
+      <div class="lang-switch">
+        <a href="statistics_ru.html" class="active">RU</a>
+        <a href="statistics.html">KZ</a>
+      </div>
+      <button class="nav-toggle" aria-label="Навигация">☰</button>
+    </div>
+  </header>
+  <main class="container">
+    <h1>Региональная статистика</h1>
+    <div class="summary-cards">
+      <div class="summary-card">
+        <div class="stat-number" data-target="22226">0</div>
+        <div class="label">Общее количество обращений</div>
+      </div>
+      <div class="summary-card">
+        <div class="stat-number" data-target="3102">0</div>
+        <div class="label">Консультации</div>
+      </div>
+      <div class="summary-card">
+        <div class="stat-number" data-target="15660">0</div>
+        <div class="label">Всего звонков</div>
+      </div>
+      <div class="summary-card">
+        <div class="stat-number" data-target="3" data-unit="%">0</div>
+        <div class="label">Коэффициент ожидания</div>
+      </div>
+    </div>
+    <section class="stats-preview">
+      <div class="stats-inline">
+        <div class="stat-inline-card">
+          <div class="stat-number" data-target="87" data-unit="%">0</div>
+          <div class="stat-label">Покрытие интернетом</div>
+        </div>
+        <div class="stat-inline-card">
+          <div class="stat-number" data-target="98" data-unit="%">0</div>
+          <div class="stat-label">Компьютеризация школ</div>
+        </div>
+        <div class="stat-inline-card">
+          <div class="stat-number" data-target="203511" data-unit=" чел">0</div>
+          <div class="stat-label">Пользователи электронных услуг</div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2>Диаграммы</h2>
+      <div class="dashboard-grid">
+        <div>
+          <div class="chart-card">
+            <h3>Покрытие интернетом по районам</h3>
+            <canvas id="coverageChartRu" aria-label="coverage chart" role="img"></canvas>
+          </div>
+          <div class="spacer-1"></div>
+          <div class="chart-card">
+            <h3>Пользователи (2018–2024)</h3>
+            <canvas id="usersChartRu" aria-label="users chart" role="img"></canvas>
+          </div>
+          <div class="spacer-1"></div>
+          <div class="chart-card">
+            <h3>Статус заявки</h3>
+            <canvas id="statusChartRu" aria-label="status chart" role="img"></canvas>
+          </div>
+          <div class="spacer-1"></div>
+          <div class="chart-card">
+            <h3>Доля по типам услуг</h3>
+            <canvas id="channelsChartRu" aria-label="channels chart" role="img"></canvas>
+          </div>
+        </div>
+        <aside>
+          <div class="service-panel">
+            <h3>Службы / Операторы</h3>
+            <div class="service-list">
+              <div class="service">
+                <div class="left"><div class="title">109</div><div class="meta">Группа: Кол-во операторов</div></div>
+                <div class="right"><strong>122 звонка</strong></div>
+              </div>
+              <div class="service">
+                <div class="left"><div class="title">112</div><div class="meta">Группа: Кол-во операторов</div></div>
+                <div class="right"><strong>156 звонков</strong></div>
+              </div>
+              <div class="service">
+                <div class="left"><div class="title">WhatsApp</div><div class="meta">Чат</div></div>
+                <div class="right"><strong>12 574</strong></div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+    <p class="small"><a class="btn" href="index_ru.html">Назад</a></p>
+  </main>
+  <footer class="site-footer">
+    <div class="container"><p>© 2025 Акмола цифр</p></div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+  <script src="js/main.js"></script>
+  <script>
+    (function(){
+      if (window.Chart && window.ChartDataLabels) Chart.register(ChartDataLabels);
+      (function(){
+        const cov = document.getElementById('coverageChartRu');
+        const covData = {labels:['Көкшетау','Степногор','Атбасар','Ерейментау','Бурабай'], values:[92,78,84,69,88]};
+        if (!cov) return;
+        try {
+          new Chart(cov,{
+            type: 'doughnut',
+            data: {labels: covData.labels, datasets:[{data: covData.values, backgroundColor:['rgba(43,136,209,0.9)','rgba(74,163,217,0.8)','rgba(159,220,255,0.8)','rgba(100,180,220,0.7)','rgba(43,110,170,0.7)'], borderColor:'#fff', borderWidth:2}]},
+            options: {responsive:true, maintainAspectRatio:true, plugins:{legend:{position:'bottom'}, datalabels:{color:'#fff', formatter:function(v){return v;}, font:{weight:'700'}}}}
+          });
+        } catch (err) {
+          console.error('coverageChartRu error', err);
+          const parent = cov.parentElement;
+          if (parent) {
+            const fb = document.createElement('div'); fb.className='chart-fallback';
+            fb.innerHTML = '<strong>Данные:</strong><ul>' + covData.labels.map(function(l,i){return '<li>'+l+': '+covData.values[i]+'</li>'}).join('') + '</ul>';
+            parent.appendChild(fb);
+            cov.style.display = 'none';
+          }
+        }
+      })();
+      (function(){
+        const users = document.getElementById('usersChartRu');
+        const usersData = {labels:['2018','2019','2020','2021','2022','2023','2024'], values:[120000,135000,148000,162000,175000,190000,203511]};
+        if (!users) return;
+        try {
+          new Chart(users,{
+            type:'bar',
+            data:{labels: usersData.labels, datasets:[{label:'Пользователи', data: usersData.values, backgroundColor:'rgba(43,136,209,0.85)'}]},
+            options:{responsive:true, maintainAspectRatio:true, scales:{y:{beginAtZero:true}}, plugins:{legend:{display:false}, datalabels:{color:'#14303f', anchor:'end', align:'end', formatter:function(v){return v.toLocaleString();}}}}
+          });
+        } catch (err) {
+          console.error('usersChartRu error', err);
+          const parent = users.parentElement;
+          if (parent) {
+            const fb = document.createElement('div'); fb.className='chart-fallback';
+            fb.innerHTML = '<strong>Пользователи по годам:</strong><ul>' + usersData.labels.map(function(l,i){return '<li>'+l+': '+usersData.values[i].toLocaleString()+'</li>'}).join('') + '</ul>';
+            parent.appendChild(fb);
+            users.style.display = 'none';
+          }
+        }
+      })();
+      (function(){
+        const status = document.getElementById('statusChartRu');
+        const statusData = {labels:['В работе','Завершённые','Новые','Прочие'], values:[2267,1569,224,80]};
+        if (!status) return;
+        try {
+          new Chart(status,{
+            type:'pie',
+            data:{labels: statusData.labels, datasets:[{data: statusData.values, backgroundColor:['rgba(74,163,217,0.9)','rgba(43,136,209,0.8)','rgba(159,220,255,0.8)','rgba(200,210,220,0.8)'], borderColor:'#fff', borderWidth:1}]},
+            options:{responsive:true, maintainAspectRatio:true, plugins:{legend:{position:'bottom'}, datalabels:{color:'#fff', formatter:function(v){return v;}}}}
+          });
+        } catch (err) {
+          console.error('statusChartRu error', err);
+          const parent = status.parentElement;
+          if (parent) {
+            const fb = document.createElement('div'); fb.className='chart-fallback';
+            fb.innerHTML = '<strong>Статусы:</strong><ul>' + statusData.labels.map(function(l,i){return '<li>'+l+': '+statusData.values[i]+'</li>'}).join('') + '</ul>';
+            parent.appendChild(fb);
+            status.style.display = 'none';
+          }
+        }
+      })();
+      (function(){
+        const channels = document.getElementById('channelsChartRu');
+        const channelsData = {labels:['Звонки','TelegramBot','WhatsappBot'], values:[16256,2637,12574]};
+        if (!channels) return;
+        try {
+          new Chart(channels,{
+            type:'bar',
+            data:{labels: channelsData.labels, datasets:[{data: channelsData.values, backgroundColor:['rgba(43,136,209,0.9)','rgba(225,100,120,0.8)','rgba(93,200,120,0.8)']} ]},
+            options:{indexAxis:'y', responsive:true, maintainAspectRatio:true, scales:{x:{beginAtZero:true}}, plugins:{legend:{display:false}, datalabels:{color:'#14303f', anchor:'end', align:'end', formatter:function(v){return v.toLocaleString();}}}}
+          });
+        } catch (err) {
+          console.error('channelsChartRu error', err);
+          const parent = channels.parentElement;
+          if (parent) {
+            const fb = document.createElement('div'); fb.className='chart-fallback';
+            fb.innerHTML = '<strong>Каналы:</strong><ul>' + channelsData.labels.map(function(l,i){return '<li>'+l+': '+channelsData.values[i].toLocaleString()+'</li>'}).join('') + '</ul>';
+            parent.appendChild(fb);
+            channels.style.display = 'none';
+          }
+        }
+      })();
+    })();
+  </script>
+</body>
+</html>
