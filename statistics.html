@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Статистика — Ақмола цифр</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">Ақмола цифр</a>
+      <nav class="nav">
+        <a href="index.html">Басты бет</a>
+        <a href="about.html">Жобалар жөнінде</a>
+        <a href="projects.html">Жобалар</a>
+        <a href="statistics.html">Статистикалар</a>
+        <a href="contact.html">Байланыс</a>
+      </nav>
+      <div class="lang-switch">
+        <a href="statistics_ru.html">RU</a>
+        <a href="statistics.html" class="active">KZ</a>
+      </div>
+      <button class="nav-toggle" aria-label="Навигация">☰</button>
+    </div>
+  </header>
+  <main class="container">
+    <h1>Өңірлік статистика</h1>
+    <div class="summary-cards">
+      <div class="summary-card">
+        <div class="stat-number" data-target="22226">0</div>
+        <div class="label">Жалпы өтініштер</div>
+      </div>
+      <div class="summary-card">
+        <div class="stat-number" data-target="3102">0</div>
+        <div class="label">Кеңестер</div>
+      </div>
+      <div class="summary-card">
+        <div class="stat-number" data-target="15660">0</div>
+        <div class="label">Шалынған қоңыраулар</div>
+      </div>
+      <div class="summary-card">
+        <div class="stat-number" data-target="3" data-unit="%">0</div>
+        <div class="label">Күту коэффициенті</div>
+      </div>
+    </div>
+    <section class="stats-preview">
+      <div class="stats-inline">
+        <div class="stat-inline-card">
+          <div class="stat-number" data-target="87" data-unit="%">0</div>
+          <div class="stat-label">Интернетпен қамту</div>
+        </div>
+        <div class="stat-inline-card">
+          <div class="stat-number" data-target="98" data-unit="%">0</div>
+          <div class="stat-label">Мектептердің компьютерленуі</div>
+        </div>
+        <div class="stat-inline-card">
+          <div class="stat-number" data-target="203511" data-unit=" адам">0</div>
+          <div class="stat-label">Электронды қызметтер пайдаланушылары</div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2>Диаграммалар</h2>
+      <div class="dashboard-grid">
+        <div>
+          <div class="chart-card">
+            <h3>Интернетпен қамту бойынша аудандар</h3>
+            <canvas id="coverageChart" aria-label="coverage chart" role="img"></canvas>
+          </div>
+          <div class="spacer-1"></div>
+          <div class="chart-card">
+            <h3>Пайдаланушылар (2018–2024)</h3>
+            <canvas id="usersChart" aria-label="users chart" role="img"></canvas>
+          </div>
+          <div class="spacer-1"></div>
+          <div class="chart-card">
+            <h3>Өтініш мәртебесі</h3>
+            <canvas id="statusChart" aria-label="status chart" role="img"></canvas>
+          </div>
+          <div class="spacer-1"></div>
+          <div class="chart-card">
+            <h3>Қызмет түрлері бойынша үлес</h3>
+            <canvas id="channelsChart" aria-label="channels chart" role="img"></canvas>
+          </div>
+        </div>
+        <aside>
+          <div class="service-panel">
+            <h3>Қызметтер / Операторлар</h3>
+            <div class="service-list">
+              <div class="service">
+                <div class="left"><div class="title">109</div><div class="meta">Жұмыс: 12 оператор</div></div>
+                <div class="right"><strong>122 қоңырау</strong></div>
+              </div>
+              <div class="service">
+                <div class="left"><div class="title">112</div><div class="meta">Жұмыс: 10 оператор</div></div>
+                <div class="right"><strong>156 қоңырау</strong></div>
+              </div>
+              <div class="service">
+                <div class="left"><div class="title">WhatsApp</div><div class="meta">Чаттар</div></div>
+                <div class="right"><strong>12 574</strong></div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+    <p class="small"><a class="btn" href="index.html">Артқа</a></p>
+  </main>
+  <footer class="site-footer">
+    <div class="container"><p>© 2025 Ақмола цифр</p></div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+  <script src="js/main.js"></script>
+  <script>
+    (function(){
+      if (window.Chart && window.ChartDataLabels) Chart.register(ChartDataLabels);
+      const cov = document.getElementById('coverageChart');
+      if (cov) {
+        new Chart(cov, {
+          type:'doughnut',
+          data:{labels:['Көкшетау','Степногор','Атбасар','Ерейментау','Бурабай'],datasets:[{data:[92,78,84,69,88],backgroundColor:['rgba(43,136,209,0.9)','rgba(74,163,217,0.8)','rgba(159,220,255,0.8)','rgba(100,180,220,0.7)','rgba(43,110,170,0.7)'],borderColor:'#fff',borderWidth:2}]},
+          options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{position:'bottom'},datalabels:{color:'#fff',formatter:v=>v,font:{weight:'700'}}}}
+        });
+      }
+      const users = document.getElementById('usersChart');
+      if (users) {
+        new Chart(users,{type:'bar',data:{labels:['2018','2019','2020','2021','2022','2023','2024'],datasets:[{label:'Пайдаланушылар',data:[120000,135000,148000,162000,175000,190000,203511],backgroundColor:'rgba(43,136,209,0.85)'}]},options:{responsive:true,maintainAspectRatio:true,scales:{y:{beginAtZero:true}},plugins:{legend:{display:false},datalabels:{color:'#14303f',anchor:'end',align:'end',formatter:v=>v.toLocaleString()}}}});
+      }
+      const status = document.getElementById('statusChart');
+      if (status) {
+        new Chart(status,{type:'pie',data:{labels:['В работе','Завершённые','Новые','Прочие'],datasets:[{data:[2267,1569,224,80],backgroundColor:['rgba(74,163,217,0.9)','rgba(43,136,209,0.8)','rgba(159,220,255,0.8)','rgba(200,210,220,0.8)'],borderColor:'#fff',borderWidth:1}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{position:'bottom'},datalabels:{color:'#fff',formatter:v=>v}}}});
+      }
+      const channels = document.getElementById('channelsChart');
+      if (channels) {
+        new Chart(channels,{type:'bar',data:{labels:['Звонки','TelegramBot','WhatsappBot'],datasets:[{data:[16256,2637,12574],backgroundColor:['rgba(43,136,209,0.9)','rgba(225,100,120,0.8)','rgba(93,200,120,0.8)']} ]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:true,scales:{x:{beginAtZero:true}},plugins:{legend:{display:false},datalabels:{color:'#14303f',anchor:'end',align:'end',formatter:v=>v.toLocaleString()}}}});
+      }
+    })();
+  </script>
+</body>
+</html>
