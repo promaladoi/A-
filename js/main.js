@@ -62,7 +62,6 @@ function animateCount(el, target) {
   }
   window.requestAnimationFrame(step);
 }
-
 function fakeSubmit(e) {
   e.preventDefault();
   alert('Хабарлама алынды. Рақмет!');
